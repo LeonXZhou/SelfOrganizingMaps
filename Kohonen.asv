@@ -1,0 +1,42 @@
+close all;
+clear all;
+
+Data = csvread("dataset_noclass.csv",1); 
+%% initialize random weights;
+weights = rand(2,3);
+ci = 0.5; % initial learning rate
+e = 0.01;
+% epoch loops
+for i = 1:1000
+    % change learning rate with each epoch
+    c = ci*exp(-0.001*i);
+    for j = 1:length(Data)
+        
+        randindex = randi(length(Data),1);
+        Distance = weights - [Data(j,:);Data(j,:)];
+        Distance = sum(Distance.^2,2);
+        [O,I] = min(Distance);
+        delta = (Data(j,:)-weights(I,:));
+        weights(I,:) = weights(I,:)+c*delta;
+    end
+    
+    if (sum(abs(delta))<e)
+        break;
+    end
+    
+end
+i
+%%
+figure;
+for i = 1:length(Data)
+    Out = weights * Data(i,:)';
+    [O,I] = max(Out);
+        if (I == 1)
+        scatter3(Data(i,1),Data(i,2),Data(i,3),'b')
+        hold on;
+    else
+        scatter3(Data(i,1),Data(i,2),Data(i,3),'r')
+        hold on; 
+    end
+end
+

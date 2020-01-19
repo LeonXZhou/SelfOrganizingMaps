@@ -1,0 +1,55 @@
+CMPE 452 - ASSIGMENT 3
+LEON ZHOU - 14LZ21 - 10177892
+
+Kohonen:
+Design:
+Weights are initialized randomly. 1000 epochs are run to converge the centroids, 
+unless other termination criteria are met.Each epoch loops through all data points. 
+Weights are adjusted using the Kohonen Algorithm and an initial learning rate of 0.5. 
+The learning rate is decreased with each epoch to improve rate of convergence and reduce
+oscilations in centroid positions. If the absolute magnitude of the change of the centroid 
+positions is below 0.1 the centroids are assumed to have converged and the trainingng stops.
+
+Sum Squared Error 1: 666.38
+Sum Squared Error 2: 577.26
+Sum Squared Error total: 1243.65
+
+Initial weights:
+    0.0264    0.7546    0.4048
+    0.0424    0.4391    0.7327
+Final weights:
+    1.2807   -0.0509    0.4170
+   -0.5162    0.4126    0.7076
+
+Number in first cluster: 627
+Number in second cluster: 373
+
+
+KMEAN:
+
+Design:
+Weights are initialized randomly.1000 epochs are run to converge the centroids, 
+unless other termination criteria are met.ach epoch loops through all data points.
+After each data point is sorted into a cluster a new centroid is calculated using
+the mean of all points in that cluster. If absolute magnitude of the centroids are changing
+less than 0.0001 the centroids are assumed to have converged and training is stopped. In addition
+if the mean squared error is below 1 the centroids are assumed to be in their optimal position and 
+training is stopped. 
+
+
+
+Sum Squared Error 1: 593.30
+Sum Squared Error 2: 665.59
+Sum Squared Error total: 1258.88
+
+Initial weights:
+    0.5583    0.9287    0.0622
+    0.0393    0.3713    0.9967
+Final weights:
+
+    0.9714    0.0740   -0.0626
+    0.0564    0.4185    1.0215
+
+Number in first cluster: 447
+Number in second cluster: 553
+
